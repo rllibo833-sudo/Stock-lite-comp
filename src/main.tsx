@@ -12,6 +12,9 @@ registerSW({
   },
   onOfflineReady() {
     console.log('STOCKLITE siap digunakan secara offline');
+  },
+  onRegisterError(error) {
+    console.error('PWA service worker registration error:', error);
   }
 });
 

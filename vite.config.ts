@@ -11,7 +11,16 @@ export default defineConfig(() => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['icon.svg', 'apple-touch-icon.png', 'pwa-192x192.png', 'pwa-512x512.png'],
+        injectRegister: 'auto',
+        includeAssets: [
+          'icon.svg',
+          'apple-touch-icon.png',
+          'pwa-192x192.png',
+          'pwa-512x512.png',
+          'pwa-maskable-512x512.png',
+          'manifest.json',
+          'manifest.webmanifest'
+        ],
         manifest: {
           id: '/',
           name: 'STOCKLITE',
@@ -23,6 +32,10 @@ export default defineConfig(() => {
           orientation: 'portrait',
           start_url: '/',
           scope: '/',
+          lang: 'id',
+          dir: 'ltr',
+          categories: ['business', 'productivity', 'utilities'],
+          prefer_related_applications: false,
           icons: [
             {
               src: '/pwa-192x192.png',
