@@ -39,7 +39,6 @@ export async function registerServiceWorker() {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             // Update tersedia
             console.log('[PWA] Update tersedia, refresh halaman untuk menggunakan versi terbaru');
-            // Optional: show UI notification untuk user
           }
         });
       }
@@ -49,17 +48,5 @@ export async function registerServiceWorker() {
   } catch (error) {
     console.error('[PWA] Service Worker registration failed:', error);
     return false;
-  }
-}
-
-// Auto-register saat module di-import
-if (typeof window !== 'undefined') {
-  // Tunggu DOM ready sebelum register
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      registerServiceWorker();
-    });
-  } else {
-    registerServiceWorker();
   }
 }
