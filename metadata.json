@@ -1,0 +1,6 @@
+{
+  "name": "STOCKLITE",
+  "description": "Aplikasi pencatatan persediaan barang sederhana, cepat, dan ringan untuk usaha kecil dan UMKM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
