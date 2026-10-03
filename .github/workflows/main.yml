@@ -1,10 +1,10 @@
-name: Build STOCKLITE APK
+name: Android APK Build
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-android:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,28 +17,31 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build web app
+        run: npm run build
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 21
+          java-version: '17'
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install Android SDK
+        run: sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
-      - name: Build Vite app
-        run: npm run build
-
-      - name: Add Android platform
+      - name: Create Android project
         run: npx cap add android
 
       - name: Sync Capacitor
         run: npx cap sync android
 
-      - name: Build debug APK
+      - name: Build APK
         working-directory: android
         run: ./gradlew assembleDebug
 
